@@ -2,47 +2,57 @@
 
 Biosite em React + Vite + TypeScript com painel administrativo e Supabase.
 
-## 1. Configurar o Supabase
+## Supabase
 
-1. Crie ou abra o projeto correto no Supabase.
-2. Abra **SQL Editor**.
-3. Execute todo o arquivo `supabase-vibra-biosite.sql` de uma vez.
-4. Em **Project Settings > API**, copie a URL e a chave `anon public`.
-5. Duplique `.env.example` com o nome `.env` e preencha:
+O projeto usa o Supabase já existente. **Não crie outro projeto Supabase.**
 
+Objetos exclusivos:
+- `vibra_biosite_content`
+- `vibra_biosite_admin_config`
+- `vibra_biosite_admin_sessions`
+- schema privado `vibra_biosite_private`
+- bucket `vibra-biosite-media`
+- Edge Function `vibra-biosite-upload`
+
+Variáveis do frontend:
 ```env
-VITE_SUPABASE_URL=https://SEU-PROJETO.supabase.co
-VITE_SUPABASE_ANON_KEY=SUA_CHAVE_ANON_PUBLICA
+VITE_SUPABASE_URL=...
+VITE_SUPABASE_ANON_KEY=...
 ```
 
-As tabelas e funções usam exclusivamente o prefixo `vibra_biosite_`.
+## Painel administrativo
 
-## 2. Rodar
+Produção:
+```text
+https://brunobiositevibra.vercel.app/?admin=1
+```
+
+O login usa senha protegida por hash no Supabase, sessões temporárias e limitação de tentativas. A senha **não deve ser escrita no repositório**.
+
+A aba **Segurança** do painel permite trocar a senha. Após trocar a senha, outras sessões administrativas são invalidadas.
+
+## Imagens
+
+Novos uploads realizados pelo painel são otimizados no navegador e enviados para o bucket `vibra-biosite-media`. O JSON do conteúdo guarda somente a URL da imagem.
+
+Imagens antigas já salvas como Base64 continuam compatíveis e podem ser substituídas gradualmente pelo painel.
+
+## Desenvolvimento
 
 ```bash
 npm install
 npm run dev
 ```
 
-## 3. Painel administrativo
-
-Abra:
-
-```text
-http://localhost:5173/?admin=1
-```
-
-O acesso utiliza somente senha. O campo não mostra nem preenche a senha automaticamente.
-
-## 4. Produção
+## Build
 
 ```bash
 npm run build
-npm run preview
 ```
 
-A pasta gerada para publicação é `dist`.
+A pasta `dist` é gerada pelo build e não deve ser versionada.
 
-## Observação sobre imagens
+## Produção
 
-As imagens escolhidas no painel são convertidas para dados e salvas junto ao conteúdo no Supabase. Para imagens de site, prefira arquivos JPG/WebP otimizados para evitar conteúdo excessivamente pesado.
+Domínio atual:
+`https://brunobiositevibra.vercel.app/`
