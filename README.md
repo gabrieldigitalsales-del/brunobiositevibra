@@ -24,7 +24,7 @@ VITE_SUPABASE_ANON_KEY=...
 
 Produção:
 ```text
-https://brunobiositevibra.vercel.app/?admin=1
+https://brunovibrasolucoes.vercel.app/?admin=1
 ```
 
 O login usa senha protegida por hash no Supabase, sessões temporárias e limitação de tentativas. A senha **não deve ser escrita no repositório**.
@@ -55,4 +55,4 @@ A pasta `dist` é gerada pelo build e não deve ser versionada.
 ## Produção
 
 Domínio atual:
-`https://brunobiositevibra.vercel.app/`
+`https://brunovibrasolucoes.vercel.app/`
