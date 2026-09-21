@@ -27,7 +27,7 @@ Produção:
 https://brunovibrasolucoes.vercel.app/?admin=1
 ```
 
-O login usa senha protegida por hash no Supabase, sessões temporárias e limitação de tentativas. A senha **não deve ser escrita no repositório**.
+O login usa senha protegida por hash no Supabase, sessões temporárias e limitação de tentativas. Senha padrão deste projeto: `asd123`. Ela pode ser alterada pela aba **Segurança** do painel.
 
 A aba **Segurança** do painel permite trocar a senha. Após trocar a senha, outras sessões administrativas são invalidadas.
 
