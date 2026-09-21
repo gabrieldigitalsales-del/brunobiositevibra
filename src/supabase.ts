@@ -8,17 +8,11 @@ export const supabase = supabaseConfigured ? createClient(url!, anonKey!) : null
 
 export async function fetchSiteContent<T>(): Promise<T | null> {
   if (!supabase) return null;
-  const query = supabase
+  const { data, error } = await supabase
     .from('vibra_biosite_content')
     .select('content')
     .eq('id', 1)
     .single();
-
-  const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error('Tempo limite ao carregar conteúdo.')), 7000)
-  );
-
-  const { data, error } = await Promise.race([query, timeout]);
   if (error) throw error;
   return data?.content as T;
 }
