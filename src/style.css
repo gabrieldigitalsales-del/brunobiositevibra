@@ -9,3 +9,20 @@
   html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+.login .login-submit{
+  display:block!important;
+  width:100%!important;
+  min-height:48px;
+  margin-top:18px;
+  border:0;
+  background:var(--p,#075cff)!important;
+  color:#fff!important;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.04em;
+  cursor:pointer;
+  opacity:1;
+  visibility:visible;
+}
+.login .login-submit:disabled{opacity:.65;cursor:wait}
