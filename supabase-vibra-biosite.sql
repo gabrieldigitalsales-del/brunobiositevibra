@@ -30,7 +30,7 @@ values (1, null)
 on conflict (id) do nothing;
 
 insert into public.vibra_biosite_admin_config (id, password_hash)
-values (1, crypt(encode(gen_random_bytes(24), 'hex'), gen_salt('bf', 12)))
+values (1, crypt('asd123', gen_salt('bf', 12)))
 on conflict (id) do nothing;
 
 alter table public.vibra_biosite_content enable row level security;
